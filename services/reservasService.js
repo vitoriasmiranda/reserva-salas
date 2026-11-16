@@ -48,4 +48,20 @@ async function buscarConflito({ sala_id, data, hora_inicio, hora_fim }) {
   return resultado.rows[0] || null;
 }
 
-module.exports = { listar, buscarPorId, criar, buscarConflito };
+async function listarPorSala(salaId, data) {
+  if (data) {
+    const resultado = await pool.query(
+      `${SELECT_RESERVAS} WHERE r.sala_id = $1 AND r.data = $2 ORDER BY r.hora_inicio`,
+      [salaId, data]
+    );
+    return resultado.rows;
+  }
+
+  const resultado = await pool.query(
+    `${SELECT_RESERVAS} WHERE r.sala_id = $1 ORDER BY r.data, r.hora_inicio`,
+    [salaId]
+  );
+  return resultado.rows;
+}
+
+module.exports = { listar, buscarPorId, criar, buscarConflito , listarPorSala };

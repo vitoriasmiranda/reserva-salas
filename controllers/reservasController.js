@@ -96,4 +96,29 @@ async function criar(req, res) {
   }
 }
 
-module.exports = { listar, buscarPorId, criar };
+async function listarPorSala(req, res) {
+  const salaId = lerId(req);
+  if (!salaId) {
+    return res.status(400).json({ erro: 'O id deve ser um número inteiro positivo' });
+  }
+
+  const { data } = req.query;
+  if (data && (!FORMATO_DATA.test(data) || !dataExiste(data))) {
+    return res.status(400).json({ erro: 'A data deve ser válida e estar no formato AAAA-MM-DD' });
+  }
+
+  try {
+    const sala = await salasService.buscarPorId(salaId);
+    if (!sala) {
+      return res.status(404).json({ erro: 'Sala não encontrada' });
+    }
+
+    const reservas = await reservasService.listarPorSala(salaId, data);
+    res.json(reservas);
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao buscar as reservas da sala' });
+  }
+}
+
+module.exports = { listar, buscarPorId, criar , listarPorSala };
