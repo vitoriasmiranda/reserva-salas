@@ -64,4 +64,9 @@ async function listarPorSala(salaId, data) {
   return resultado.rows;
 }
 
-module.exports = { listar, buscarPorId, criar, buscarConflito , listarPorSala };
+async function remover(id) {
+  const resultado = await pool.query('DELETE FROM reservas WHERE id = $1 RETURNING *', [id]);
+  return resultado.rows.length > 0;
+}
+
+module.exports = { listar, buscarPorId, criar, buscarConflito , listarPorSala, remover };

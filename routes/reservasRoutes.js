@@ -6,5 +6,6 @@ const router = express.Router();
 router.get('/', reservasController.listar);
 router.get('/:id', reservasController.buscarPorId);
 router.post('/', reservasController.criar);
+router.delete('/:id', reservasController.remover);
 
 module.exports = router;

@@ -121,4 +121,22 @@ async function listarPorSala(req, res) {
   }
 }
 
-module.exports = { listar, buscarPorId, criar , listarPorSala };
+async function remover(req, res) {
+  const id = lerId(req);
+  if (!id) {
+    return res.status(400).json({ erro: 'O id deve ser um número inteiro positivo' });
+  }
+
+  try {
+    const removida = await reservasService.remover(id);
+    if (!removida) {
+      return res.status(404).json({ erro: 'Reserva não encontrada' });
+    }
+    res.status(204).send();
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao cancelar a reserva' });
+  }
+}
+
+module.exports = { listar, buscarPorId, criar , listarPorSala, remover };
