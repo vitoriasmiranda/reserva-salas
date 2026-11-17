@@ -9,5 +9,6 @@ API em Node.js e Express para reservar salas e laboratórios de instituições d
 3. Crie um arquivo `.env` com a variável `DATABASE_URL`
 4. Rode `node --watch server.js`
 5. Importe no Postman a coleção que está em `postman/reserva-salas-api.postman_collection.json`
+6. Na aba Variables da coleção, defina a variável `baseUrl` como `http://localhost:3000`
 
 🚧 Em desenvolvimento.

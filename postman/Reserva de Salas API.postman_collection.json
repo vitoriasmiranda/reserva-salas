@@ -237,9 +237,9 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "DELETE {{baseUrl}}/salas/9999",
+              "raw": "{{baseUrl}}/salas/9999",
               "host": [
-                "DELETE {{baseUrl}}"
+                "{{baseUrl}}"
               ],
               "path": [
                 "salas",
