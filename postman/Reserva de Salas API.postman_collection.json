@@ -1,0 +1,356 @@
+{
+  "info": {
+    "_postman_id": "f452549e-ecbd-4a92-8313-47efb7629de3",
+    "name": "Reserva de Salas API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "60157165",
+    "_collection_link": "https://go.postman.co/collection/60157165-f452549e-ecbd-4a92-8313-47efb7629de3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Salas",
+      "item": [
+        {
+          "name": "Listas Salas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar sala por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar sala inexistente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar sala com id inválido",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar sala",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"Sala 305\",\r\n  \"bloco\": \"Bloco C\",\r\n  \"capacidade\": 35,\r\n  \"tipo\": \"sala\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/salas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar sala com tipo inválido",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"Auditório Central\",\r\n  \"bloco\": \"Bloco A\",\r\n  \"capacidade\": 200,\r\n  \"tipo\": \"auditorio\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/salas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar sala sem campos obrigatórios",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"capacidade\": 30,\r\n  \"tipo\": \"sala\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/salas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Editar sala",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"Sala 101\",\r\n  \"bloco\": \"Bloco A\",\r\n  \"capacidade\": 45,\r\n  \"tipo\": \"sala\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/salas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Editar sala inexistente",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"sala_id\": 1,\r\n  \"responsavel\": \"Teste\",\r\n  \"data\": \"2026-11-20\",\r\n  \"hora_inicio\": \"12:00\",\r\n  \"hora_fim\": \"11:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/salas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Apagar sala",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/salas/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Apagar sala inexistente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/salas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reservas",
+      "item": [
+        {
+          "name": "Listar Reservas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Reserva por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Agenda da sala no dia",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar reserva",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"sala_id\": 2,\r\n  \"responsavel\": \"Prof. Diego\",\r\n  \"data\": \"2026-12-10\",\r\n  \"hora_inicio\": \"08:00\",\r\n  \"hora_fim\": \"10:00\",\r\n  \"motivo\": \"Monitoria\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reservas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar reserva com conflito",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"sala_id\": 2,\r\n  \"responsavel\": \"Prof. Eva\",\r\n  \"data\": \"2026-12-10\",\r\n  \"hora_inicio\": \"09:00\",\r\n  \"hora_fim\": \"11:00\",\r\n  \"motivo\": \"Teste de conflito\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reservas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar Reserva Inválida",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Criar reserva sem corpo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancelar reserva",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}
