@@ -11,12 +11,18 @@
       "name": "Salas",
       "item": [
         {
-          "name": "Listas Salas",
+          "name": "Listar salas",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/salas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas"
+              ]
             }
           },
           "response": []
@@ -27,7 +33,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/salas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas",
+                "1"
+              ]
             }
           },
           "response": []
@@ -38,7 +51,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/salas/9999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas",
+                "9999"
+              ]
             }
           },
           "response": []
@@ -49,7 +69,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/salas/abc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas",
+                "abc"
+              ]
             }
           },
           "response": []
@@ -174,12 +201,13 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/salas",
+              "raw": "{{baseUrl}}/salas/9999",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
-                "salas"
+                "salas",
+                "9999"
               ]
             }
           },
@@ -209,13 +237,13 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/salas/1",
+              "raw": "DELETE {{baseUrl}}/salas/9999",
               "host": [
-                "{{baseUrl}}"
+                "DELETE {{baseUrl}}"
               ],
               "path": [
                 "salas",
-                "1"
+                "9999"
               ]
             }
           },
@@ -232,7 +260,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/reservas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservas"
+              ]
             }
           },
           "response": []
@@ -243,7 +277,14 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/reservas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservas",
+                "1"
+              ]
             }
           },
           "response": []
@@ -254,7 +295,21 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/salas/1/reservas?data=2026-11-20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "salas",
+                "1",
+                "reservas"
+              ],
+              "query": [
+                {
+                  "key": "data",
+                  "value": "2026-11-20"
+                }
+              ]
             }
           },
           "response": []
@@ -266,7 +321,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"sala_id\": 2,\r\n  \"responsavel\": \"Prof. Diego\",\r\n  \"data\": \"2026-12-10\",\r\n  \"hora_inicio\": \"08:00\",\r\n  \"hora_fim\": \"10:00\",\r\n  \"motivo\": \"Monitoria\"\r\n}",
+              "raw": "{\r\n  \"sala_id\": 2,\r\n  \"responsavel\": \"Prof. Diego\",\r\n  \"data\": \"2026-12-10\",\r\n  \"hora_inicio\": \"13:00\",\r\n  \"hora_fim\": \"15:00\",\r\n  \"motivo\": \"Monitoria\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -314,10 +369,25 @@
         {
           "name": "Criar Reserva Inválida",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"sala_id\": 2,\r\n  \"responsavel\": \"Teste\",\r\n  \"data\": \"2026-12-10\",\r\n  \"hora_inicio\": \"16:00\",\r\n  \"hora_fim\": \"14:00\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/reservas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservas"
+              ]
             }
           },
           "response": []
@@ -325,10 +395,16 @@
         {
           "name": "Criar reserva sem corpo",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/reservas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservas"
+              ]
             }
           },
           "response": []
@@ -336,10 +412,17 @@
         {
           "name": "Cancelar reserva",
           "request": {
-            "method": "GET",
+            "method": "DELETE",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "{{baseUrl}}/reservas/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reservas",
+                "1"
+              ]
             }
           },
           "response": []
@@ -350,6 +433,9 @@
   "variable": [
     {
       "key": "baseUrl",
+      "value": ""
+    },
+    {
       "value": ""
     }
   ]
