@@ -18,7 +18,7 @@ function hoje() {
   return `${ano}-${mes}-${dia}`;
 }
 
-function validarReserva({ sala_id, responsavel, data, hora_inicio, hora_fim }) {
+function validarReserva({ sala_id, responsavel, data, hora_inicio, hora_fim } = {}) {
   if (!sala_id || !responsavel || !data || !hora_inicio || !hora_fim) {
     return 'Sala, responsável, data, hora de início e hora de fim são obrigatórios';
   }

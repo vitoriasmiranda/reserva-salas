@@ -1,7 +1,7 @@
 const salasService = require('../services/salasService');
 const lerId = require('../utils/lerId');
 
-function validarSala({ nome, bloco, capacidade, tipo }) {
+function validarSala({ nome, bloco, capacidade, tipo }= {}) {
   if (!nome || !bloco || !capacidade || !tipo) {
     return 'Nome, bloco, capacidade e tipo são obrigatórios';
   }
