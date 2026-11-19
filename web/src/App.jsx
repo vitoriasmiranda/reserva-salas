@@ -1,8 +1,10 @@
+import ListaSalas from './components/ListaSalas'
+
 function App() {
   return (
     <main>
       <h1>Reserva de Salas</h1>
-      <p>Endereço da API: {import.meta.env.VITE_API_URL}</p>
+      <ListaSalas />
     </main>
   )
 }
