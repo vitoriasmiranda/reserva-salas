@@ -98,8 +98,30 @@ main {
   border-radius: 8px;
   padding: 12px 16px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.info-reserva {
+  display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+.botao-cancelar {
+  background: none;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.botao-cancelar:hover,
+.botao-cancelar:focus-visible {
+  background: #fef2f2;
 }
 
 .formulario {

@@ -17,6 +17,7 @@ function AgendaSala({ sala, aoVoltar }) {
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
   const [versao, setVersao] = useState(0)
+  const [erroCancelar, setErroCancelar] = useState(null)
 
   useEffect(() => {
     async function carregarReservas() {
@@ -40,6 +41,27 @@ function AgendaSala({ sala, aoVoltar }) {
     carregarReservas()
   }, [sala.id, data, versao])
 
+    async function cancelarReserva(reserva) {
+    const confirmou = window.confirm(
+            `Apagar a reserva de ${reserva.responsavel}, das ${reserva.hora_inicio} às ${reserva.hora_fim}?\n\nClique em OK para apagar.`
+    )
+    if (!confirmou) return
+
+    setErroCancelar(null)
+    try {
+      const resposta = await fetch(`${API_URL}/reservas/${reserva.id}`, { method: 'DELETE' })
+      if (!resposta.ok) {
+        const dados = await resposta.json()
+        setErroCancelar(dados.erro)
+        return
+      }
+      setVersao((v) => v + 1)
+    } catch (e) {
+      console.error(e)
+      setErroCancelar('Não foi possível cancelar a reserva. Confira se a API está ligada.')
+    }
+  }
+
   return (
     <section>
       <button type="button" className="botao-voltar" onClick={aoVoltar}>
@@ -58,6 +80,7 @@ function AgendaSala({ sala, aoVoltar }) {
 
       {carregando && <p>Carregando agenda...</p>}
       {erro && <p role="alert" className="erro">{erro}</p>}
+      {erroCancelar && <p role="alert" className="erro">{erroCancelar}</p>}
 
       {!carregando && !erro && reservas.length === 0 && (
         <p>Nenhuma reserva neste dia. A sala está livre.</p>
@@ -67,11 +90,21 @@ function AgendaSala({ sala, aoVoltar }) {
         <ul className="lista-reservas">
           {reservas.map((reserva) => (
             <li key={reserva.id} className="cartao-reserva">
-              <strong>
-                {reserva.hora_inicio} às {reserva.hora_fim}
-              </strong>
-              <span>{reserva.responsavel}</span>
-              {reserva.motivo && <span className="detalhe">{reserva.motivo}</span>}
+              <div className="info-reserva">
+                <strong>
+                  {reserva.hora_inicio} às {reserva.hora_fim}
+                </strong>
+                <span>{reserva.responsavel}</span>
+                {reserva.motivo && <span className="detalhe">{reserva.motivo}</span>}
+              </div>
+              <button
+                type="button"
+                className="botao-cancelar"
+                onClick={() => cancelarReserva(reserva)}
+                aria-label={`Cancelar a reserva de ${reserva.responsavel}, das ${reserva.hora_inicio} às ${reserva.hora_fim}`}
+              >
+                Apagar
+              </button>
             </li>
           ))}
         </ul>
