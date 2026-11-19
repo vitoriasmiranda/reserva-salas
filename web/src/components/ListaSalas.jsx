@@ -27,7 +27,7 @@ function  ListaSalas({ aoSelecionar }) {
     carregarSalas()
   }, [])
 
-  if (carregando) return <p>Carregando salas...</p>
+  if (carregando) return <p role="status">Carregando salas...</p>
   if (erro) return <p role="alert" className="erro">{erro}</p>
 
   return (

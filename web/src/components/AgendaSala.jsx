@@ -78,7 +78,7 @@ function AgendaSala({ sala, aoVoltar }) {
         <input type="date" value={data} onChange={(e) => setData(e.target.value)} />
       </label>
 
-      {carregando && <p>Carregando agenda...</p>}
+      {carregando && <p role="status">Carregando agenda...</p>}
       {erro && <p role="alert" className="erro">{erro}</p>}
       {erroCancelar && <p role="alert" className="erro">{erroCancelar}</p>}
 
