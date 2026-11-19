@@ -31,6 +31,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 4px;
+    width: 100%;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
 }
 
 .cartao-sala span {
@@ -40,4 +44,60 @@ main {
 
 .erro {
   color: #b91c1c;
+}
+
+.cartao-sala:hover,
+.cartao-sala:focus-visible {
+  border-color: #0d9488;
+}
+
+.botao-voltar {
+  background: none;
+  border: none;
+  color: #0d9488;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.detalhe {
+  color: #475569;
+  font-size: 14px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 220px;
+  margin: 16px 0;
+  font-weight: 600;
+}
+
+.campo input {
+  font: inherit;
+  font-weight: 400;
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.lista-reservas {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cartao-reserva {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #0d9488;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }

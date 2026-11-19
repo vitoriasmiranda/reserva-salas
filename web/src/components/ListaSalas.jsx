@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 const API_URL = import.meta.env.VITE_API_URL
 
-function ListaSalas() {
+function  ListaSalas({ aoSelecionar }) {
   const [salas, setSalas] = useState([])
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
@@ -35,12 +35,14 @@ function ListaSalas() {
       <h2>Salas</h2>
       <ul className="lista-salas">
         {salas.map((sala) => (
-          <li key={sala.id} className="cartao-sala">
-            <strong>{sala.nome}</strong>
-            <span>
-              {sala.bloco} · {sala.capacidade} pessoas ·{' '}
-              {sala.tipo === 'laboratorio' ? 'Laboratório' : 'Sala'}
-            </span>
+        <li key={sala.id}>
+            <button type="button" className="cartao-sala" onClick={() => aoSelecionar(sala)}>
+              <strong>{sala.nome}</strong>
+              <span>
+                {sala.bloco} · {sala.capacidade} pessoas ·{' '}
+                {sala.tipo === 'laboratorio' ? 'Laboratório' : 'Sala'}
+              </span>
+            </button>
           </li>
         ))}
       </ul>
