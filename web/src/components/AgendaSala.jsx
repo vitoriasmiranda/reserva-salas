@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import FormReserva from './FormReserva'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -15,6 +16,7 @@ function AgendaSala({ sala, aoVoltar }) {
   const [reservas, setReservas] = useState([])
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
+  const [versao, setVersao] = useState(0)
 
   useEffect(() => {
     async function carregarReservas() {
@@ -36,7 +38,7 @@ function AgendaSala({ sala, aoVoltar }) {
     }
 
     carregarReservas()
-  }, [sala.id, data])
+  }, [sala.id, data, versao])
 
   return (
     <section>
@@ -74,6 +76,7 @@ function AgendaSala({ sala, aoVoltar }) {
           ))}
         </ul>
       )}
+        <FormReserva sala={sala} data={data} aoCriar={() => setVersao((v) => v + 1)} />
     </section>
   )
 }

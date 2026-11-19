@@ -101,3 +101,49 @@ main {
   flex-direction: column;
   gap: 2px;
 }
+
+.formulario {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 24px;
+}
+
+.formulario h3 {
+  margin-top: 0;
+}
+
+.formulario .campo {
+  max-width: none;
+  margin: 0 0 12px;
+}
+
+.linha {
+  display: flex;
+  gap: 12px;
+}
+
+.linha .campo {
+  flex: 1;
+}
+
+.botao-principal {
+  background: #0d9488;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-principal:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.sucesso {
+  color: #047857;
+}
